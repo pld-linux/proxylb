@@ -1,0 +1,42 @@
+diff -urN proxylb-1.0.3/config.c proxylb-1.0.3-new/config.c
+--- proxylb-1.0.3/config.c	2002-06-20 00:17:08.000000000 +0200
++++ proxylb-1.0.3-new/config.c	2005-02-03 16:01:11.255992024 +0100
+@@ -12,11 +12,11 @@
+     (*ptr_nr_nodes) = 0;
+     (*ptr_head)     = NULL;
+ 
+-    fp = fopen ((conf_file==NULL)?"./config.txt":conf_file, "r");  /* open the file for reading */
++    fp = fopen ((conf_file==NULL)?CONFIG:conf_file, "r");  /* open the file for reading */
+ 
+     if (fp == NULL) {
+         debug==1?syslog(LOG_ERR, "can't open input file '%s'!",
+-            (conf_file==NULL)?"./config.txt":conf_file):NULL;
++            (conf_file==NULL)?CONFIG:conf_file):NULL;
+         exit(1);
+     }
+ 
+diff -urN proxylb-1.0.3/Makefile proxylb-1.0.3-new/Makefile
+--- proxylb-1.0.3/Makefile	2002-05-19 16:13:05.000000000 +0200
++++ proxylb-1.0.3-new/Makefile	2005-02-03 16:06:21.484830072 +0100
+@@ -4,7 +4,8 @@
+ # For debugging...
+ #CFLAGS=-D_REENTRANT -Wall -ggdb -DDEBUG
+ 
+-CFLAGS=-D_REENTRANT -Wall -O6
++CFLAGS ?= -O2
++override CFLAGS += -D_REENTRANT -DCONFIG="\"/etc/proxylb.conf\"" -Wall
+ LIBS=-lpthread
+ 
+ # LIBS for a non posix OS, like Solaris...
+diff -urN proxylb-1.0.3/proxylb.c proxylb-1.0.3-new/proxylb.c
+--- proxylb-1.0.3/proxylb.c	2002-06-20 00:44:44.000000000 +0200
++++ proxylb-1.0.3-new/proxylb.c	2005-02-03 16:02:23.835958192 +0100
+@@ -85,7 +85,7 @@
+            "-s, --srcport            Source port        (required)\n"
+            "-S, --srcip              Source IP          (optional)\n"
+            "-c, --config             Configuration file (optional)\n"
+-           "    if not given ./config.txt will be used\n"
++           "    if not given "CONFIG" will be used\n"
+            "-n, --nodaemon           Run proxy _NOT_ as UNIX daemon (defaults to daemon mode)\n"
+            "-d, --debug              Turn on syslog debugging\n"
+            "    --help               display this help and exit\n"
