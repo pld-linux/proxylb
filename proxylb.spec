@@ -1,5 +1,5 @@
 Summary:	TCP proxy with load balancing
-Summary(pl):	TCP proxy z load balancingiem
+Summary(pl):	Proxy TCP z load balancingiem
 Name:		proxylb
 Version:	1.0.3
 Release:	1
