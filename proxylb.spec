@@ -1,5 +1,5 @@
 Summary:	TCP proxy with load balancing
-Summary(pl):	Proxy TCP z load balancingiem
+Summary(pl.UTF-8):   Proxy TCP z load balancingiem
 Name:		proxylb
 Version:	1.0.3
 Release:	1
@@ -17,11 +17,11 @@ connections to numerous end boxes (computers) using a simple weight
 algorithm. With its low memory and disk footprint, threads, it is
 ideal for professional load balancing.
 
-%description -l pl
-Proxylb jest programem napisanym w C, s³u¿±cym do rozk³adania
-obci±¿enia po³±czeñ przychodz±cych przy u¿yciu prostego algorytmu.
-Dziêki niskiemu zu¿yciu pamiêci i miejsca na dysku, proxylb jest
-idealnym narzêdziem do profesjonalnego load balancingu.
+%description -l pl.UTF-8
+Proxylb jest programem napisanym w C, sÅ‚uÅ¼Ä…cym do rozkÅ‚adania
+obciÄ…Å¼enia poÅ‚Ä…czeÅ„ przychodzÄ…cych przy uÅ¼yciu prostego algorytmu.
+DziÄ™ki niskiemu zuÅ¼yciu pamiÄ™ci i miejsca na dysku, proxylb jest
+idealnym narzÄ™dziem do profesjonalnego load balancingu.
 
 %prep
 %setup -q
