@@ -25,7 +25,7 @@ idealnym narzędziem do profesjonalnego load balancingu.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__make} \
